@@ -52,8 +52,9 @@ class App(Tk):
         menubutton2 = Button(self,text="Go to page 2", command = self.page2Switch)
         menubutton2.grid(row=1, column=1, sticky="NEW")
 
+        # these lines make sure that the left frame is the right size
+        # and adds a new "empty" row at the bottom to takeup the extra space below the buttons
         self.columnconfigure(0,minsize=800)
-        self.columnconfigure(0,weight=1)
         self.rowconfigure(2,weight=1)
 
         # connect to the database

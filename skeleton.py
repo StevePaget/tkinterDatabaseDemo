@@ -83,7 +83,7 @@ class App(Tk):
         self.introFrame.grid(row=0, column=0,rowspan=3, sticky="NSEW") 
 
     def page2Switch(self):
-        # removes other frames from the grid, but adds page 1
+        # removes other frames from the grid, but adds page 2
         self.introFrame.grid_forget()
         self.secondFrame.grid(row=0, column=0,rowspan=3, sticky="NSEW") 
 

@@ -30,7 +30,12 @@ class App(Tk):
         # run the procedure that generates new tables and records
         # this is just for the demo. You wouldn't make new tables every time
         #makeDatabase(self.db)
+
+        # now print out what you find in there
         self.testDB()
+
+        # this belongs at the end of the __init__ procedure.
+        # It starts the main loop which runs the tkinter window
         self.mainloop()
 
     def testDB(self):

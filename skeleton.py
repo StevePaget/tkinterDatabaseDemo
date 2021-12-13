@@ -7,14 +7,16 @@ def makeDatabase(db):
     # this function will create the database tables from scratch and
     # add some dummy data. This should only be run once!
     c = db.cursor()
+    c.execute("DROP TABLE IF EXISTS tblPupils")
+    c.execute("DROP TABLE IF EXISTS tblForms")
     c.execute("CREATE TABLE tblForms (formname text)")
-    c.execute("CREATE TABLE tblPupils (firstname TEXT, surname TEXT, formname TEXT, year INT)")
+    c.execute("CREATE TABLE tblPupils (pupilID INTEGER PRIMARY KEY AUTOINCREMENT, firstname TEXT, surname TEXT, formname TEXT, year INT)")
     c.execute("INSERT INTO tblForms Values ('8JBC')") # simple command adding some data
     c.execute("INSERT INTO tblForms Values ('9SAP')")
     c.execute("INSERT INTO tblForms Values ('10EJL')")
-    c.execute("INSERT INTO tblPupils Values (?,?,?,?)", ("Sally","Smith","9SAP", 9))
-    c.execute("INSERT INTO tblPupils Values (?,?,?,?)", ("Bob","King","9SAP", 9))
-    c.execute("INSERT INTO tblPupils Values (?,?,?,?)", ("Carol","Singer","8JBC", 8))
+    c.execute("INSERT INTO tblPupils(firstname, surname, formname, year) Values (?,?,?,?)", ("Sally","Smith","NULL", 9))
+    c.execute("INSERT INTO tblPupils(firstname, surname, formname, year) Values (?,?,?,?)", ("Bob","King","9SAP", 9))
+    c.execute("INSERT INTO tblPupils(firstname, surname, formname, year) Values (?,?,?,?)", ("Carol","Singer","8JBC", 8))
     db.commit()
 
 class App(Tk):
@@ -61,7 +63,7 @@ class App(Tk):
         self.db = sql.connect("demofile.db")
         # run the procedure that generates new tables and records
         # this is just for the demo. You wouldn't make new tables every time
-        #makeDatabase(self.db)
+        makeDatabase(self.db)
 
         # now print out what you find in there
         self.testDB()

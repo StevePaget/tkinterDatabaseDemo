@@ -51,8 +51,7 @@ class LoginFrame(tk.Frame):
         c = self.parent.db.cursor()
         r = c.execute("SELECT * from tblPeople WHERE username = ? and password = ?", [self.unamebox.get(), self.passbox.get()])
         results = r.fetchall()
-        #if len(results)>0:
-        if True:
+        if len(results)>0:
             self.feedbacklabel.config(text="")
             self.parent.successfulLogin(self.unamebox.get())
             return True
